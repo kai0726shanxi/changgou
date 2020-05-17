@@ -11,7 +11,7 @@
 
     <artifactId>changgou-service</artifactId>
     <packaging>pom</packaging>
-    <description>各大微服务的父工程</description>
+    <description>各大微服务的父工程数据库管理</description>
 
 
 </project>
