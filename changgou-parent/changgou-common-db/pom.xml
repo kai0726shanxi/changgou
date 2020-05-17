@@ -32,7 +32,7 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <!--分页插件-->
+        <!--分页插件挺好用-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
