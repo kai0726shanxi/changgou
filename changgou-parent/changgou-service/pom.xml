@@ -12,6 +12,13 @@
     <artifactId>changgou-service</artifactId>
     <packaging>pom</packaging>
     <description>各大微服务的父工程数据库管理</description>
+    <dependencies>
+        <dependency>
+            <groupId>com.changgou</groupId>
+            <artifactId>changgou-common-db</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
