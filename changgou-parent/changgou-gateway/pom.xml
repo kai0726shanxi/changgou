@@ -9,9 +9,25 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>changgou-gateway</artifactId>
-    <packaging>pom</packaging>
     <description>
-        GateWay 微服务网关父工程
+        GateWay 微服务网关
     </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
