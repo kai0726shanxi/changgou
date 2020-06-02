@@ -13,6 +13,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication
 @EnableEurekaClient
+@MapperScan({"com.changgou.user.mapper"})
 public class ProductApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProductApplication.class,args);
