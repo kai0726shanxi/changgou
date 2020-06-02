@@ -17,5 +17,6 @@ public interface UserService {
     void saveUserInfo(UserBean userBean);
     void  deleteUserInfo(Long  id);
     Result<List<UserBean>>  findAll();
+    Result<UserBean> findById(Long id);
 
 }

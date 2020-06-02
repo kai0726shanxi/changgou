@@ -35,4 +35,11 @@ public class UserServiceImpl implements UserService {
     public Result<List<UserBean>> findAll() {
         return Result.success(userMapper.selectAll());
     }
+
+    @Override
+    public Result<UserBean> findById(Long id) {
+        UserBean userBean=new UserBean();
+        userBean.setUserId(id);
+        return Result.success(userMapper.selectByPrimaryKey(userBean));
+    }
 }

@@ -26,6 +26,11 @@ public class Result<T> {
         return new Result<T>(codeMsg);
     }
 
+    public static <T> Result error(int code, String message){
+
+        return new Result<T>(code,message);
+    }
+
     /**
      * 构造方法私有化，不允许外部new utils.Result
      * @param data
@@ -47,6 +52,14 @@ public class Result<T> {
         this.code = codeMsg.getCode();
         this.message = codeMsg.getMessage();
     }
+
+
+    private Result(int code,String message){
+
+        this.code = code;
+        this.message = message;
+    }
+
 
     public int getCode() {
         return code;

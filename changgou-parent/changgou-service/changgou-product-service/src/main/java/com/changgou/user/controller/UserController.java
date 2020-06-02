@@ -7,15 +7,14 @@ package com.changgou.user.controller;
  * @description 用户接口实现$
  */
 
+import com.changgou.CodeMassage;
 import com.changgou.user.entity.UserBean;
 import com.changgou.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.Result;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -34,11 +33,13 @@ public Result<List<UserBean>> finAll(){
     return userService.findAll();
 }
 
+@GetMapping(value = "/details")
+public Result<UserBean> details(@RequestParam  @NotNull(message = CodeMassage.ID_NOT_NULL) Long id){
 
-@GetMapping("/hello")
-public Result<String> testData(){
 
-     return Result.success("hello");
-}
+     return userService.findById(id);
+};
+
+
 
 }
