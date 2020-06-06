@@ -18,6 +18,8 @@ public interface UserService {
 Result<UserBean>  login(@RequestBody UserBean userBean);
 //注册
 Result<UserBean> register(@RequestBody UserBean userBean);
+//设置用户信息
+Result<UserBean> setUserInformation(@RequestBody UserBean userBean);
 
 
 
