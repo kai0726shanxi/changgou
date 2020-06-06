@@ -1,5 +1,7 @@
 package utils;
 
+import exceptionUtils.BaseErrorInfoInterface;
+
 public class Result<T> {
 
     private int code;
@@ -31,6 +33,21 @@ public class Result<T> {
         return new Result<T>(code,message);
     }
 
+    public static <T> Result error(String message){
+
+        return new Result<T>(message);
+    }
+
+    /**
+     * 失败
+     */
+    public static <T> Result error(BaseErrorInfoInterface errorInfo) {
+        return new Result<T>(errorInfo);
+
+    }
+
+
+
     /**
      * 构造方法私有化，不允许外部new utils.Result
      * @param data
@@ -39,6 +56,14 @@ public class Result<T> {
         this.code = 0;
         this.message = "SUCCESS";
         this.data = data;
+    }
+
+
+    private Result(BaseErrorInfoInterface errorInfo){
+
+        this.setCode(errorInfo.getResultCode());
+        this.setMessage(errorInfo.getResultMsg());
+
     }
 
     /**
@@ -60,6 +85,11 @@ public class Result<T> {
         this.message = message;
     }
 
+    private Result(String message){
+
+        this.code = -1;
+        this.message = message;
+    }
 
     public int getCode() {
         return code;

@@ -7,39 +7,48 @@ package com.changgou.user.serviceimpl;
  * @description 用户接口实现$
  */
 
+import com.changgou.CodeMassage;
 import com.changgou.user.entity.UserBean;
 import com.changgou.user.mapper.UserMapper;
 import com.changgou.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import utils.Result;
 
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserMapper userMapper;
+   private  UserMapper userMapper;
+
     @Override
-    public void saveUserInfo(UserBean userBean) {
-        userMapper.insertSelective(userBean);
+    public Result<UserBean> login(UserBean userBean) {
+
+        return null;
     }
 
     @Override
-    public void deleteUserInfo(Long id) {
+    public Result<UserBean> register(UserBean userBean) {
+        UserBean userBean1=new UserBean();
+        userBean1.setUserAccount(userBean.getUserAccount());
+        userBean1.setUserPsw(userBean.getUserPsw());
+        if(StringUtils.isEmpty(userBean1.getUserAccount())||StringUtils.isEmpty(userBean1.getUserPsw())){
+            return Result.error(-1, CodeMassage.ACCOUNT_OR_PSW_NOT_NULL);
+        }
+        int userCount = userMapper.selectCount(userBean1);
+        if (userCount>0){
 
-    }
+            return Result.error(CodeMassage.ACCOUNT_EXIT);
+        }
+        int i = userMapper.insertSelective(userBean1);
+       if (i>0){
 
-    @Override
-    public Result<List<UserBean>> findAll() {
-        return Result.success(userMapper.selectAll());
-    }
+       userBean1 =userMapper.selectOne(userBean1);
 
-    @Override
-    public Result<UserBean> findById(Long id) {
-        UserBean userBean=new UserBean();
-        userBean.setUserId(id);
-        return Result.success(userMapper.selectByPrimaryKey(userBean));
+       }
+     return  Result.success(userBean1);
     }
 }

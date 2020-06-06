@@ -7,15 +7,13 @@ package com.changgou.user.controller;
  * @description 用户接口实现$
  */
 
-import com.changgou.CodeMassage;
 import com.changgou.user.entity.UserBean;
 import com.changgou.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import utils.Result;
 
-import javax.validation.constraints.NotNull;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/user")
@@ -27,18 +25,21 @@ public class UserController {
  private UserService userService;
 
 
- @GetMapping("/findAll")
-public Result<List<UserBean>> finAll(){
+   @PostMapping("/login")
+    public  Result<UserBean> loginInfo(@RequestBody UserBean userBean){
 
-    return userService.findAll();
-}
-
-@GetMapping(value = "/details")
-public Result<UserBean> details(@RequestParam  @NotNull(message = CodeMassage.ID_NOT_NULL) Long id){
+    return userService.login(userBean);
+   }
 
 
-     return userService.findById(id);
-};
+   @PostMapping(value = "/register", consumes = "application/json")
+   public Result<UserBean>  register(@RequestBody UserBean userBean){
+
+
+       return userService.register(userBean);
+   }
+
+
 
 
 

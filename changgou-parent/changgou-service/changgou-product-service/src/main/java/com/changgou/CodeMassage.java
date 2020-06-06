@@ -8,6 +8,7 @@ package com.changgou;
  */
 public class CodeMassage {
 
-    public final  static  String  ID_NOT_NULL="用户id不能为空";
+    public final  static  String  ACCOUNT_OR_PSW_NOT_NULL="账户或密码不能";
+    public final  static  String  ACCOUNT_EXIT="账户已存在";
 
 }
