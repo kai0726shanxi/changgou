@@ -125,4 +125,15 @@ public class UserServiceImpl implements UserService {
 
         return null;
     }
+
+    @Override
+    public Result loginOut() {
+
+        // TODO: 2020/6/6 通过头信息获取token 通过token清除缓存信息
+
+
+
+
+        return Result.success("退出成功");
+    }
 }

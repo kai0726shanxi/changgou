@@ -23,6 +23,13 @@ Result<UserBean> setUserInformation(@RequestBody UserBean userBean);
 
 
 
+//退出登录
+
+Result loginOut();
+
+
+
+
 
 
 }
